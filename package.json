@@ -10,13 +10,6 @@
     "build": "umi build",
     "site": "npm run presite && cross-env APP_TYPE=site npm run build && firebase deploy",
     "analyze": "cross-env ANALYZE=1 umi build",
-    "lint:style": "stylelint \"src/**/*.less\" --syntax less",
-    "lint": "eslint --ext .js src mock tests && npm run lint:style",
-    "lint:fix": "eslint --fix --ext .js src mock tests && npm run lint:style",
-    "lint-staged": "lint-staged",
-    "lint-staged:js": "eslint --ext .js",
-    "tslint": "npm run tslint:fix",
-    "tslint:fix": "tslint --fix 'src/**/*.ts*'",
     "test": "umi test",
     "test:component": "umi test ./src/components",
     "test:all": "node ./tests/run-tests.js",
@@ -94,14 +87,6 @@
   "optionalDependencies": {
     "puppeteer": "^1.10.0"
   },
-  "lint-staged": {
-    "**/*.{js,jsx,less}": [
-      "prettier --write",
-      "git add"
-    ],
-    "**/*.{js,jsx}": "npm run lint-staged:js",
-    "**/*.less": "stylelint --syntax less"
-  },
   "engines": {
     "node": ">=8.0.0"
   },
@@ -112,7 +97,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint-staged"
+      "pre-commit": " --no-verify"
     }
   }
 }

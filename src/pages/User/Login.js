@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import { connect } from 'dva';
-import { formatMessage, FormattedMessage } from 'umi/locale';
-import Link from 'umi/link';
-import { Checkbox, Alert, Icon } from 'antd';
-import Login from '@/components/Login';
-import styles from './Login.less';
+import React, { Component } from "react";
+import { connect } from "dva";
+import { formatMessage, FormattedMessage } from "umi/locale";
+import Link from "umi/link";
+import { Checkbox, Alert, Icon } from "antd";
+import Login from "@/components/Login";
+import styles from "./Login.less";
 
 const { Tab, UserName, Password, Mobile, Captcha, Submit } = Login;
 
 @connect(({ login, loading }) => ({
   login,
-  submitting: loading.effects['login/login'],
+  submitting: loading.effects["login/login"]
 }))
 class LoginPage extends Component {
   state = {
-    type: 'account',
-    autoLogin: true,
+    type: "account",
+    autoLogin: true
   };
 
   onTabChange = type => {
@@ -24,14 +24,14 @@ class LoginPage extends Component {
 
   onGetCaptcha = () =>
     new Promise((resolve, reject) => {
-      this.loginForm.validateFields(['mobile'], {}, (err, values) => {
+      this.loginForm.validateFields(["mobile"], {}, (err, values) => {
         if (err) {
           reject(err);
         } else {
           const { dispatch } = this.props;
           dispatch({
-            type: 'login/getCaptcha',
-            payload: values.mobile,
+            type: "login/getCaptcha",
+            payload: values.mobile
           })
             .then(resolve)
             .catch(reject);
@@ -44,23 +44,28 @@ class LoginPage extends Component {
     if (!err) {
       const { dispatch } = this.props;
       dispatch({
-        type: 'login/login',
+        type: "login/login",
         payload: {
           ...values,
-          type,
-        },
+          type
+        }
       });
     }
   };
 
   changeAutoLogin = e => {
     this.setState({
-      autoLogin: e.target.checked,
+      autoLogin: e.target.checked
     });
   };
 
   renderMessage = content => (
-    <Alert style={{ marginBottom: 24 }} message={content} type="error" showIcon />
+    <Alert
+      style={{ marginBottom: 24 }}
+      message={content}
+      type="error"
+      showIcon
+    />
   );
 
   render() {
@@ -76,16 +81,20 @@ class LoginPage extends Component {
             this.loginForm = form;
           }}
         >
-          <Tab key="account" >
-            {login.status === 'error' &&
-              login.type === 'account' &&
+          <Tab key="account" tab={formatMessage({ id: "app.login.tab-login" })}>
+            {login.status === "error" &&
+              login.type === "account" &&
               !submitting &&
-              this.renderMessage(formatMessage({ id: 'app.login.message-invalid-credentials' }))}
+              this.renderMessage(
+                formatMessage({ id: "app.login.message-invalid-credentials" })
+              )}
             <UserName name="userName" placeholder="username: admin or user" />
             <Password
               name="password"
               placeholder="password: ant.design"
-              onPressEnter={() => this.loginForm.validateFields(this.handleSubmit)}
+              onPressEnter={() =>
+                this.loginForm.validateFields(this.handleSubmit)
+              }
             />
           </Tab>
 
@@ -93,17 +102,15 @@ class LoginPage extends Component {
             <Checkbox checked={autoLogin} onChange={this.changeAutoLogin}>
               <FormattedMessage id="app.login.remember-me" />
             </Checkbox>
-            <a style={{ float: 'right' }} href="">
+            <a style={{ float: "right" }} href="">
               <FormattedMessage id="app.login.forgot-password" />
             </a>
           </div>
           <Submit loading={submitting}>
             <FormattedMessage id="app.login.login" />
           </Submit>
-       
         </Login>
       </div>
-      
     );
   }
 }
