@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
-import { formatMessage } from "umi/locale";
-import Link from "umi/link";
-import { Icon } from "antd";
-import GlobalFooter from "@/components/GlobalFooter";
+import React, { Fragment } from 'react';
+import { formatMessage } from 'umi/locale';
+import Link from 'umi/link';
+import { Icon } from 'antd';
+import GlobalFooter from '@/components/GlobalFooter';
 //import SelectLang from "@/components/SelectLang";
-import styles from "./BlankLayout.less";
-import logo from "../assets/logo.svg";
-import HeaderView from "./Header";
+import styles from './BlankLayout.less';
+import logo from '../assets/logo.svg';
+import HeaderView from './Header';
 
 // const links = [
 //   {

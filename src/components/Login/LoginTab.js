@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Tabs } from "antd";
-import LoginContext from "./loginContext";
+import React, { Component } from 'react';
+import { Tabs } from 'antd';
+import LoginContext from './loginContext';
 
 const { TabPane } = Tabs;
 

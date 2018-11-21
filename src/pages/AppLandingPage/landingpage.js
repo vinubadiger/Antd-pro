@@ -1,11 +1,11 @@
-import React, { PureComponent } from "react";
-import { connect } from "dva";
-import { Card, Button, Icon, List } from "antd";
+import React, { PureComponent } from 'react';
+import { connect } from 'dva';
+import { Card, Button, Icon, List } from 'antd';
 //import GlobalHeader from '@/components/GlobalHeader'
-import Ellipsis from "@/components/Ellipsis";
-import PageHeaderWrapper from "@/components/PageHeaderWrapper";
+import Ellipsis from '@/components/Ellipsis';
+import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 
-import styles from "./landingpage.less";
+import styles from './landingpage.less';
 
 @connect(({ list, loading }) => ({
   list,
