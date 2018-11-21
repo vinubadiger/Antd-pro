@@ -74,6 +74,8 @@ export default {
   "component.noticeIcon.cleared": "Cleared",
   "component.noticeIcon.empty": "No notifications",
   "menu.home": "Home",
+  "menu.landingpage": "LandingPage",
+  "menu.landingpage.landingpage": "landingpage",
   "menu.dashboard": "Dashboard",
   "menu.dashboard.analysis": "Analysis",
   "menu.dashboard.monitor": "Monitor",
