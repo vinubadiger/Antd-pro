@@ -88,10 +88,10 @@ class LoginPage extends Component {
               this.renderMessage(
                 formatMessage({ id: "app.login.message-invalid-credentials" })
               )}
-            <UserName name="userName" placeholder="username: admin or user" />
+            <UserName name="userName" placeholder="Username" />
             <Password
               name="password"
-              placeholder="password: ant.design"
+              placeholder="Password"
               onPressEnter={() =>
                 this.loginForm.validateFields(this.handleSubmit)
               }

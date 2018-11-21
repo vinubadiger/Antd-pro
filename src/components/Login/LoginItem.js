@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import { Form, Input, Button, Row, Col } from 'antd';
-import { formatMessage } from 'umi/locale';
-import omit from 'omit.js';
-import styles from './index.less';
-import ItemMap from './map';
-import LoginContext from './loginContext';
+import React, { Component } from "react";
+import { Form, Input, Button, Row, Col } from "antd";
+import { formatMessage } from "umi/locale";
+import omit from "omit.js";
+import styles from "./index.less";
+import ItemMap from "./map";
+import LoginContext from "./loginContext";
 
 const FormItem = Form.Item;
 
 class WrapFormItem extends Component {
   static defaultProps = {
-    getCaptchaButtonText: formatMessage({ id: 'form.captcha' }),
-    getCaptchaSecondText: formatMessage({ id: 'form.captcha.second' }),
+    getCaptchaButtonText: formatMessage({ id: "form.captcha" }),
+    getCaptchaSecondText: formatMessage({ id: "form.captcha.second" })
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
+      count: 0
     };
   }
 
@@ -47,7 +47,7 @@ class WrapFormItem extends Component {
 
   getFormItemOptions = ({ onChange, defaultValue, customprops, rules }) => {
     const options = {
-      rules: rules || customprops.rules,
+      rules: rules || customprops.rules
     };
     if (onChange) {
       options.onChange = onChange;
@@ -75,10 +75,10 @@ class WrapFormItem extends Component {
     const { count } = this.state;
 
     const {
-      form: { getFieldDecorator },
+      form: { getFieldDecorator }
     } = this.props;
 
-    // 这么写是为了防止restProps中 带入 onChange, defaultValue, rules props
+    // restProps onChange, defaultValue, rules props
     const {
       onChange,
       customprops,
@@ -96,13 +96,15 @@ class WrapFormItem extends Component {
     const options = this.getFormItemOptions(this.props);
 
     const otherProps = restProps || {};
-    if (type === 'Captcha') {
-      const inputProps = omit(otherProps, ['onGetCaptcha', 'countDown']);
+    if (type === "Captcha") {
+      const inputProps = omit(otherProps, ["onGetCaptcha", "countDown"]);
       return (
         <FormItem>
           <Row gutter={8}>
             <Col span={16}>
-              {getFieldDecorator(name, options)(<Input {...customprops} {...inputProps} />)}
+              {getFieldDecorator(name, options)(
+                <Input {...customprops} {...inputProps} />
+              )}
             </Col>
             <Col span={8}>
               <Button
@@ -111,7 +113,9 @@ class WrapFormItem extends Component {
                 size="large"
                 onClick={this.onGetCaptcha}
               >
-                {count ? `${count} ${getCaptchaSecondText}` : getCaptchaButtonText}
+                {count
+                  ? `${count} ${getCaptchaSecondText}`
+                  : getCaptchaButtonText}
               </Button>
             </Col>
           </Row>
@@ -120,7 +124,9 @@ class WrapFormItem extends Component {
     }
     return (
       <FormItem>
-        {getFieldDecorator(name, options)(<Input {...customprops} {...otherProps} />)}
+        {getFieldDecorator(name, options)(
+          <Input {...customprops} {...otherProps} />
+        )}
       </FormItem>
     );
   }
